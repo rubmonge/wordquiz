@@ -1,3 +1,4 @@
+<?php require 'src/controller.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,14 +36,30 @@
                 </div>
                 <div class="collapse navbar-collapse pull-right">
                     <ul class="nav navbar-nav">                        
-                        <li><a href="#" data-toggle="modal" data-target="#clues"> Pistas</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#instructions">Instrucciones</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#clues">Pistas</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </div>
 
         <div class="container" id='content'>
+            <? if (isset($data['validation'])): ?>
+                <div class='row'>
+                    <div class="alert alert-danger col-lg-12" role="alert"><?= $data['validation'] ?></div>
+                </div>
+            <? endif ?>
+            <? if (isset($data['new_clue']) && $data['new_clue']): ?>
+                <? if (count($data['clues']) <= count($clues)): ?>
+                    <div class='row'>
+                        <div class="alert alert-success col-lg-12" role="alert">¡Has desbloqueado una nueva <a href='#' data-toggle="modal" data-target="#clues">pista</a>!</div>
+                    </div>
+                <? else: ?>
+                    <div class='row'>
+                        <div class="alert alert-info col-lg-12" role="alert">Tocaría una pista... pero ¿sabes qué? No tenemos más :( </div>
+                    </div>
+                <? endif ?>
+            <? endif ?>
             <div class='row'>
                 <div class="col-lg-6">
                     <div class="jumbotron">               
@@ -50,7 +67,7 @@
                         <form role="form" method="post">
                             <div class="form-group">
                                 <label  class="sr-only" for="word">Email address</label>
-                                <input name="word" type="text" class="form-control" id="word" placeholder="Escribe algo">
+                                <input autofocus='true' name="word" type="text" class="form-control" id="word" placeholder="Escribid algo">
                             </div>
 
                             <button type="submit" class="btn btn-default">Probar</button>
@@ -60,7 +77,7 @@
 
                 <div class="col-lg-6">                                                            
                     <figure>
-                        <img src='http://lorempixel.com/g/555/315/' class="img-responsive"/>
+                        <img src='http://lorempixel.com/g/555/415/' class="img-responsive"/>
                         <figcaption>Inhalated random pic</figcaption>
                     </figure>
                 </div>
@@ -68,13 +85,21 @@
             <div class="row">
                 <div class="col-lg-12">                            
                     <h4>Cómo vas:</h4>
-                    <p>Ya has probado con: (Aquí se mostrarán las palabras ya usadas). <span class="label label-default">zapato</span></p>
-                    <p>Llevas <strong>N</strong> intentos <em>##mesage-like-deberias-ir-resolviendolo-ya....##</em></p>
+                    <p>Lleváis <strong><?= $data['tries'] ?></strong> intentos. <em><?= $data['message'] ?></em></p>
+                    <? if (is_array($data['words']) && count($data['words'])): ?>
+                        <p>
+                            Ya has probado con: 
+                            <? foreach ($data['words'] as $word): ?>
+                                <span class="label label-default"><?= $word ?></span>
+                            <? endforeach ?>
+                        </p>
+                    <? endif ?>
                 </div>
             </div>
             <div class="footer">
                 <p>&copy; Hecho con 'amor' por los Inhalaos para un 4 de Octubre. 
                     | <a href='#' data-toggle="modal" data-target="#instructions">Instrucciones</a>
+                    | <a href='#' data-toggle="modal" data-target="#clues">Pistas</a>
                 </p>
             </div>
 
@@ -85,10 +110,22 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Pistas (ya desbloqueadas)</h4>
+                        <h4 class="modal-title">Pistas</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Aqui se mostrarán las pistas ya desbloqueadas</p>
+                        <? if (is_array($data['clues']) && count($data['clues'])): ?>
+                            <ol>
+                                <? foreach ($data['clues'] as $k => $clue): ?>
+                                    <? if ($k != count($data['clues']) - 1): ?>
+                                        <li><?= $clue ?></li>
+                                    <? else: ?>
+                                        <li><strong><?= $clue ?></strong></li>
+                                    <? endif ?>
+                                <? endforeach ?>
+                            </ol>
+                        <? else: ?>
+                            <p>Aqui se mostrarán las pistas ya desbloqueadas</p>
+                        <? endif ?>
                     </div>                   
                 </div>
             </div>
@@ -101,7 +138,21 @@
                         <h4 class="modal-title">Instrucciones</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Aqui se explicarán las instrucciones</p>
+                        <p>
+
+                            Se os ha dado un candado y esta dirección web.<br/>
+                            Para abrir el candando necesitais un código y para saber el código debeis jugar.<br/>
+                            <br/>
+                            La cosa no tiene mucho secreto:<br/>
+                            <strong>Acertar escribiendo lo correcto</strong>.<br/>
+                            <br/>
+                            Si aciertais se os mostrará el código y caso resuelto. Si no debeis seguir jugando.<br/>
+                            Cada 25 intentos (aproximadamente... tampoco os vamos a mentir) se os dará una pista inhalada, marca de la casa.<br/>
+                            <br/>
+                            Eso es todo.<br/><br/>
+                            Que comience el juego.
+
+                        </p>
                     </div>
                 </div>
             </div>

@@ -5,11 +5,11 @@
     background-image: url('../img/background.jpg');
     background-size: 100% auto;
     background-repeat: no-repeat;
-    text-align: right;
+    text-align: left;
     text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 }
 .jumbotron h2{
-    margin-top:20px;
+    margin-top:12rem;
 }
 
 .footer{
