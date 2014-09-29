@@ -1,1 +1,1 @@
-{"clues":4,"words":["de la","en","jorenore","lugar","mancha","no","oooqwiq","poner","que","qwieuqwe","se","un","zapato"],"tries":15}
+{"level":0,"words":[],"tries":0,"0":{"clues":0}}

@@ -14,6 +14,7 @@
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <link href="assets/css/styles.css" rel="stylesheet">
+        <link href="assets/colorbox/colorbox.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -32,7 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">BodaPresentKey</a>
+                    <a class="navbar-brand" href="#">Ganaros el regalo</a>
                 </div>
                 <div class="collapse navbar-collapse pull-right">
                     <ul class="nav navbar-nav">                        
@@ -43,67 +44,90 @@
             </div>
         </div>
 
-        <div class="container" id='content'>
-            <? if (isset($data['validation'])): ?>
-                <div class='row'>
-                    <div class="alert alert-danger col-lg-12" role="alert"><?= $data['validation'] ?></div>
-                </div>
-            <? endif ?>
-            <? if (isset($data['new_clue']) && $data['new_clue']): ?>
-                <? if (count($data['clues']) <= count($clues)): ?>
+        <? if (!$data['end_of_game']): ?>
+            <div class="container" id='content'>
+                <? if (isset($data['hit'])): ?>
                     <div class='row'>
-                        <div class="alert alert-success col-lg-12" role="alert">¡Has desbloqueado una nueva <a href='#' data-toggle="modal" data-target="#clues">pista</a>!</div>
-                    </div>
-                <? else: ?>
-                    <div class='row'>
-                        <div class="alert alert-info col-lg-12" role="alert">Tocaría una pista... pero ¿sabes qué? No tenemos más :( </div>
+                        <div class="alert alert-success col-lg-12" role="alert"><?= $data['hit'] ?></div>
                     </div>
                 <? endif ?>
-            <? endif ?>
-            <div class='row'>
-                <div class="col-lg-6">
-                    <div class="jumbotron">               
-                        <h2>Quique, Irene <br/> juguemos a un juego</h2>
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <label  class="sr-only" for="word">Email address</label>
-                                <input autofocus='true' name="word" type="text" class="form-control" id="word" placeholder="Escribid algo">
-                            </div>
+                <? if (isset($data['validation'])): ?>
+                    <div class='row'>
+                        <div class="alert alert-danger col-lg-12" role="alert"><?= $data['validation'] ?></div>
+                    </div>
+                <? endif ?>
+                <? if (isset($data['new_clue']) && $data['new_clue']): ?>
+                    <? if (count($data['clues']) <= count($clues)): ?>
+                        <div class='row'>
+                            <div class="alert alert-success col-lg-12" role="alert">¡Habéis desbloqueado una nueva <a href='#' data-toggle="modal" data-target="#clues">pista</a>!</div>
+                        </div>
+                    <? else: ?>
+                        <div class='row'>
+                            <div class="alert alert-info col-lg-12" role="alert">Tocaría una pista... pero ¿sabes qué? No tenemos más :( </div>
+                        </div>
+                    <? endif ?>
+                <? endif ?>
+                <div class='row'>
+                    <div class="col-lg-6">
+                        <div class="jumbotron">               
+                            <h2>Quique, Irene <br/> juguemos a un juego</h2>
+                            <form role="form" method="post">
+                                <div class="form-group">
+                                    <label  class="sr-only" for="word">Email address</label>
+                                    <input autofocus='true'  onpaste="return false" name="word" type="text" class="form-control" id="word" placeholder="Escribid algo">
+                                </div>
 
-                            <button type="submit" class="btn btn-default">Probar</button>
-                        </form>
+                                <button type="submit" class="btn btn-default">Probar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">                                                            
+                        <figure>
+                            <img src='<?= $data['image'] ?>' class="img-responsive desaturate "/>
+                            <figcaption>Inhalated random pic</figcaption>
+                        </figure>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">                            
+                        <h4>Cómo vas:</h4>
+                        <p>Lleváis <strong><?= $data['tries'] ?></strong> intentos y estáis en el nivel <strong><?= $data['level'] ?>: </strong> <em><?= $data['message'] ?></em></p>
+                        <? if (is_array($data['words']) && count($data['words'])): ?>
+                            <p>
+                                Ya has probado con: 
+                                <? foreach ($data['words'] as $word): ?>
+                                    <span class="label label-default"><?= $word ?></span>
+                                <? endforeach ?>
+                            </p>
+                        <? endif ?>
+                    </div>
+                </div>
+                <div class="footer">
+                    <p>&copy; Hecho con 'amor' por los Inhalaos para un 4 de Octubre. 
+                        | <a href='#' data-toggle="modal" data-target="#instructions">Instrucciones</a>
+                        | <a href='#' data-toggle="modal" data-target="#clues">Pistas</a>
+                    </p>
+                </div>
 
-                <div class="col-lg-6">                                                            
-                    <figure>
-                        <img src='http://lorempixel.com/g/555/415/' class="img-responsive"/>
-                        <figcaption>Inhalated random pic</figcaption>
-                    </figure>
+            </div> <!-- /container -->
+        <? else: ?>
+            <div class="container" id='content'>
+                <div class="row">
+                    <h2>Habéis ganao! perfect! <br/><?= $data['hit'] ?></h2>
+                </div>
+                <div class="row">
+                    <? $images = RandImage::images() ?>
+                    <? foreach ($images as $image): ?>
+                        <div class="col-xs-6 col-md-3">
+                            <a href="<?= $image ?>" class="thumbnail">
+                                <img src="<?= $image ?>" class="img-responsive img-rounded desaturate">
+                            </a>
+                        </div>
+                    <? endforeach ?>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">                            
-                    <h4>Cómo vas:</h4>
-                    <p>Lleváis <strong><?= $data['tries'] ?></strong> intentos. <em><?= $data['message'] ?></em></p>
-                    <? if (is_array($data['words']) && count($data['words'])): ?>
-                        <p>
-                            Ya has probado con: 
-                            <? foreach ($data['words'] as $word): ?>
-                                <span class="label label-default"><?= $word ?></span>
-                            <? endforeach ?>
-                        </p>
-                    <? endif ?>
-                </div>
-            </div>
-            <div class="footer">
-                <p>&copy; Hecho con 'amor' por los Inhalaos para un 4 de Octubre. 
-                    | <a href='#' data-toggle="modal" data-target="#instructions">Instrucciones</a>
-                    | <a href='#' data-toggle="modal" data-target="#clues">Pistas</a>
-                </p>
-            </div>
-
-        </div> <!-- /container -->
+        <? endif ?>
 
         <div class="modal fade" id="clues">
             <div class="modal-dialog">
@@ -124,7 +148,7 @@
                                 <? endforeach ?>
                             </ol>
                         <? else: ?>
-                            <p>Aqui se mostrarán las pistas ya desbloqueadas</p>
+                            <p>De momento no habéis desbloqueado ninguna pista para este nivel.</p>
                         <? endif ?>
                     </div>                   
                 </div>
@@ -162,6 +186,7 @@
 
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/colorbox/jquery.colorbox-min.js"></script>
         <script src="assets/js/scripts.js"></script>
     </body>
 </html>
