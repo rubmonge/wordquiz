@@ -21,7 +21,8 @@ if (strlen(trim($word))) {
     if ($check->check($word)) {
         /* Acierta la palabra -> subimos nivel */
         $data['hit'] = $answers[$state->state['level']];
-        $state->addLevel();
+        $state->addLevel()->sendMail('Han pasado al nivel: '.$state->state['level']);
+        
     } else {
         /* No acierta -> nos reimos un poco */
         if (!(count($state->state['words']) % $wordsForClue)) {
@@ -37,6 +38,7 @@ if (strlen(trim($word))) {
 if ($check->endOfGame($state->state['level'])) {
     $data['end_of_game'] = true;
     $data['hit'] = $answers[$state->state['level']];
+    $state->sendMail('Se han pasado el juego');
 }
 
 $data['message'] = $messages[rand(0, count($messages) - 1)];
@@ -48,6 +50,7 @@ $data['clues'] = array();
 for ($i = 0; $i < $state->state[$state->state['level']]['clues']; $i++) {
     if (isset($clues[$state->state['level']][$i])) {
         $data['clues'][$i] = $clues[$state->state['level']][$i];
+        $data['current_clue'] = $data['clues'][$i];
     }
 }
 

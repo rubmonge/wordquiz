@@ -1,19 +1,35 @@
 <?php
 
-$wordsForClue = 4;
+$wordsForClue = 1;
 
 $words = array(
     0 => 'gasolina',
     1 => 'buitrera',
     2 => 'monegro',
     3 => 'giñote',
-    4 => 'napoleon');
+    4 => 'napoleon',
+    5 => 'konga',
+    6 => 'mochales',
+    7 => 'destornillador',
+    8 => 'butano',
+    9 => 'camisola',
+    10 => 'colchones',
+    11 => 'banana',
+    12 => 'el teo');
 $answers = array(
-    0 => '¡Guay! pasas al nivel 2',
+    0 => '¡Guay! pasáis al nivel 2',
     1 => '¡La habéis clavao! Directos al nivel 3 :D',
     2 => '¡Estáis en racha! A ver como se os da el terrible nivel 4',
-    3 => '¡Toma toma toma! ¡Pasáis al <strong>último nivel!</strong>',
-    4 => 'Perfecto Fin del juego!'
+    3 => 'Esta era fácil, veamos la siguiente. Nivel 5.',
+    4 => 'Bien, bien, pero... ¡La cosa se os complica en el nivel 6!',
+    5 => 'Hurry up hurry up! next level! Nivel 7',
+    6 => '¡Toooooma! Ahí le habéis dao. Seguimos con el nivel 8',
+    7 => '¡No os será tan fácil en el nivel 9!',
+    8 => 'Perfecto. Nos vamos acercando al final, pero aun queda un poco. Nivel 10',
+    9 => '¿Es un pájaro? ¿Es un avión? ¿Es un petiso-caranvanal-volador? ¡NO! Es el increible nivel 11.',
+    10 => 'HELL YEAH!! NIVEL 12 RULEZ!',
+    11 => '¡Toma toma toma! ¡Pasáis al <strong>último nivel!</strong>',
+    12 => 'Perfecto habéis vencido a la máquina. Fin del juego!'
 );
 $clues = array(
     0 => array(
@@ -56,6 +72,70 @@ $clues = array(
         4 => 'Se cree que pudo morir envenenado.',
         5 => 'Se dejó el gorro un día que pasaba por Sicilia.',
     ),
+    5 => array(
+        0 => 'No es una planta herbácea de la familia de las cucurbitáceas',
+        1 => 'Tiene un alto contenido de azúcar',
+        2 => 'Es líquido',
+        3 => 'Es potable, que no es poco',
+        4 => 'Se puede bailar',
+        5 => 'Made in Jaraba'
+    ),
+    6 => array(
+        0 => 'No, esta vez la palabra toampoco es Maite',
+        1 => 'Vive cerca de Jaraba',
+        2 => 'No es aragonés',
+        3 => 'Rima con prácticas sexuales',
+        4 => 'Es primo del plátano de los fruitis',
+        5 => 'Es un pueblo pequeño en el valle del Mesa'
+    ),
+    7 => array(
+        0 => 'A veces desearías poder tener uno en la mano',
+        1 => 'Se puede beber',
+        2 => 'Tiene mucho hierro',
+        3 => 'Da más vueltas que un tonto',
+        4 => 'Un día se fueron a buscarlo y casi no vuelven',
+        5 => 'Más vale tenerlo cerca si algún día se te afloja un tornillo'
+    ),
+    8 => array(
+        0 => 'Piensa en algo asqueroso',
+        1 => 'Piensa en algo grasiento',
+        2 => 'Piensa en manteca',
+        3 => 'Piensa en manteca rancia',
+        4 => 'Piensa en manteca rancia fermentada',
+        5 => 'Ahora piensa en que este gas es muy tóxico, inflamable y explosivo'
+    ),
+    9 => array(
+        0 => 'Aunque alguien quisiera comérsela toda entera, no podría hacerlo',
+        1 => 'No es la tranca de Nacho Vidal',
+        2 => 'Es una prenda de vestir',
+        3 => 'Se utiliza en una fiesta sagrada',
+        4 => 'Es morada, aunque no tiene que ver con los nazarenos',
+        5 => 'Rima con "videoconsola"'
+    ),
+    10 => array(
+        0 => 'Marchaos a tomar una cerveza, que estáis ya cansado de esta tontada',
+        1 => 'Los hay de muchas medidas y grosores',
+        2 => 'Los hay de muchos materiales',
+        3 => 'Siempre es un buen sitio para estar cuando te aburres y no sabes qué hacer',
+        4 => 'Y si os aburrís mucho, pero mucho, ¿por qué no vais y los pintáis?',
+        5 => 'Está en plural, ¡que en la peña había más de uno!'
+    ),
+    11 => array(
+        0 => 'Se dice de una república',
+        1 => 'La puedes encontrar en Ikea',
+        2 => 'Es amarillo',
+        3 => 'Muy rico en hidratos de carbono',
+        4 => 'De forma similar a un pepino',
+        5 => 'Lo encuentras en los mercados en grupos de tres a veinte',
+        6 => 'El único fruto del amor según Michael Chacón',
+    ),
+    12 => array(
+        0 => 'Tiene perfil en facebook',
+        1 => '40 años de experiencia',
+        2 => 'Especialidad en rancheras',
+        3 => 'Pertenece a un gran dúo superconocido en Jarabador',
+        4 => 'Con artículo delante, pues claro!!'
+    )
 );
 
 $messages = array(
@@ -78,13 +158,44 @@ $messages = array(
     16 => 'Cada vez que falláis un gatito muere...',
     17 => 'Cada vez que falláis un gatito muere...',
     18 => 'Cada vez que falláis un gatito muere...',
+    19 => 'Eres buen chaval... eres buen chaval... pero sácame el soplete del culo',
+    20 => 'Ñigu ñigu ñiguuu ñigu ñigu ñá',
+    21 => 'Para disfrutar pam pam ven a Fraguel Rock',
+    22 => 'Y nos dieron las 10 y las 11... las 12 la 1 y las 2 y las 3',
+    23 => 'Y desnudos al anochecer os sorprendió la palabra que os pasa de nivel',
+    24 => 'Follow da lidar lidar lidar follow da lidar, amonó',
+    25 => 'En Terrer saben la respuesta del último nivel',
+    26 => 'Me voy a llenar un par de botellas a la fuente y vuelvo',
+    27 => 'El melocotonen con vinen me alijera el escoten',
+    28 => 'Obladí obladá amo pa-llá que la fiesta vanpezá',
+    29 => 'Si os claváis en algún nivel siempre podéis preguntarnos, eh... que luego ya si eso.. ea',
+    30 => 'Jodo, acertar alguna ya, ¿no?'
 );
 $validations = array(
-    '0' => ' ¿##REPLACE##? ¿En serio? ¡Eso no vale ni como respuesta!',
-    '1' => ' ¿##REPLACE##? Va a ser que no...',
-    '2' => ' ¿Cómo se os ocurre pensar que \'##REPLACE##\' va a ser la buena? ¡¿En que estáis pensando?!',
-    '3' => ' Ni de coña que es ##REPLACE##.',
-    '3' => ' Yo tenía un perro que se llamaba ##REPLACE##.',
-    '4' => ' ¿##REPLACE##? frio frio.',
-    '5' => ' ¿##REPLACE##? Tomaros un descanso y seguid más tarde... por que os estáis luciendo...',
+    0 => ' ¿##REPLACE##? ¿En serio? ¡Eso no vale ni como respuesta!',
+    1 => ' ¿##REPLACE##? Va a ser que no...',
+    2 => ' ¿Cómo se os ocurre pensar que \'##REPLACE##\' va a ser la buena? ¡¿En que estáis pensando?!',
+    3 => ' Ni de coña que es ##REPLACE##.',
+    3 => ' Yo tenía un perro que se llamaba ##REPLACE##.',
+    4 => ' ¿##REPLACE##? frio frio.',
+    5 => ' ¿##REPLACE##? Tomaros un descanso y seguid más tarde... por que os estáis luciendo...',
+    6 => ' Noo noo nooo',
+    7 => ' ##REPLACE## ##REPLACE##m ##REPLACE##um ##REPLACE##erum ... no conjuga. ',
+    8 => ' Volcado de pila... error!',
+    9 => ' ... mother of ##REPLACE## ...',
+    10 => ' Caramba carambita carambirurá, no es ##REPLACE## y nunca lo será.',
+    11 => ' Cuando voy andando por la calle nunca penso en ##REPLACE##, pues no es mi onomatopeya, diga beee diga beee ',
+    12 => ' Ni ##REPLACE## ni kowabungas que valgan.',
+    13 => ' Había una vez una pareja que no daban ni una... ',
+    14 => ' Erase una vez que se era una pareja a un juego tonto pegados... ',
+    15 => ' ¡Probad con otra INSENSATOS!',
+    16 => ' ##REPLACE## no tiene poder aquí',
+    17 => ' ¡Con ##REPLACE## no podeis pasar!',
+    19 => ' No te fies de ##REPLACE## sus ojos pueden confundirte',
+    20 => ' No estáis usando la fuerza Luke.',
+    21 => ' La cagastes Burt Lancaster',
+    22 => ' ##REPLACE## no tiene el grado de miriclorianos requerido',
+    22 => ' Poner ##REPLACE## es como ir pa ná, e ir pa ná es tonteria',
+    23 => ' Cómo están las cabezas Manolo...',
+    24 => ' La que acabáis de poner... ¡NO! y la que pongáis luego... tampoco.'
 );

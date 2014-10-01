@@ -57,9 +57,14 @@
                     </div>
                 <? endif ?>
                 <? if (isset($data['new_clue']) && $data['new_clue']): ?>
-                    <? if (count($data['clues']) <= count($clues)): ?>
+                    <? if (count($data['clues']) < count($clues[$data['level']])): ?>
                         <div class='row'>
-                            <div class="alert alert-success col-lg-12" role="alert">¡Habéis desbloqueado una nueva <a href='#' data-toggle="modal" data-target="#clues">pista</a>!</div>
+            
+                            <div class="alert alert-success col-lg-12" role="alert">
+                                ¡Habéis desbloqueado una nueva <a href='#' data-toggle="modal" data-target="#clues">pista</a>!                                
+                                <br/>
+                                <strong><?=$data['current_clue']?></strong>
+                            </div>
                         </div>
                     <? else: ?>
                         <div class='row'>
@@ -92,7 +97,7 @@
                 <div class="row">
                     <div class="col-lg-12">                            
                         <h4>Cómo vas:</h4>
-                        <p>Lleváis <strong><?= $data['tries'] ?></strong> intentos y estáis en el nivel <strong><?= $data['level'] ?>: </strong> <em><?= $data['message'] ?></em></p>
+                        <p>Lleváis <strong><?= $data['tries'] ?></strong> intentos y estáis en el nivel <strong><?= $data['level']+1 ?>: </strong> <em><?= $data['message'] ?></em></p>
                         <? if (is_array($data['words']) && count($data['words'])): ?>
                             <p>
                                 Ya has probado con: 
@@ -134,7 +139,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Pistas</h4>
+                        <h4 class="modal-title">Pistas del nivel actual</h4>
                     </div>
                     <div class="modal-body">
                         <? if (is_array($data['clues']) && count($data['clues'])): ?>
@@ -163,17 +168,15 @@
                     </div>
                     <div class="modal-body">
                         <p>
-
-                            Se os ha dado un candado y esta dirección web.<br/>
-                            Para abrir el candando necesitais un código y para saber el código debeis jugar.<br/>
-                            <br/>
                             La cosa no tiene mucho secreto:<br/>
                             <strong>Acertar escribiendo lo correcto</strong>.<br/>
                             <br/>
-                            Si aciertais se os mostrará el código y caso resuelto. Si no debeis seguir jugando.<br/>
-                            Cada 25 intentos (aproximadamente... tampoco os vamos a mentir) se os dará una pista inhalada, marca de la casa.<br/>
+                            Tendréis que acertar varias veces pues el juego tiene varios niveles.<br/>
+                            Para daros un poco de cancha cada 25 intentos (aproximadamente... tampoco os vamos a mentir) se os dará una pista inhalada, marca de la casa.<br/>
+                            Cada vez que paséis de nivel, ¡lo sabremos! 'uuuuuuh magia!<br/>
+                            Si llegáis al final, ¡lo sabremos! (¡uuuuuh magia! 2) y nos pondremos en contacto con vosotros para comunicarios el siguiente paso a realizar. <br/>                         
                             <br/>
-                            Eso es todo.<br/><br/>
+                            Eso es todo por el momento.<br/><br/>
                             Que comience el juego.
 
                         </p>

@@ -1,1 +1,1 @@
-{"level":0,"words":[],"tries":0,"0":{"clues":0}}
+{"level":4,"words":[":)","baraja","buitrera","calitrocho","cocacola","cosa","empiezo","ford","gasolina","gato","gi\u00f1ote","indio","jaraba","monegro","negro","nolose","nose","perro","prf","rascacielos","songoku","zapato","\u00e1tico"],"tries":25,"0":{"clues":6},"1":{"clues":5},"2":{"clues":5},"3":{"clues":5}}
